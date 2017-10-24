@@ -28,18 +28,18 @@
   Output: "You can use this path to read in the various datasets as we go through the lesson. 
     Rather than type out the entire path each time, you can use the paste() function. 
     Let's try. We will have to change the default separator from ' ' to ''. 
-    Type: paste(lessonpath, 'example1.txt', sep = '')"
-  CorrectAnswer: paste(lessonpath, 'example1.txt', sep = '')
-  AnswerTests: omnitest(correctExpr="paste(lessonpath, 'example1.txt', sep = '')")
-  Hint: Type paste(lessonpath, 'example1.txt', sep = '')
+    Type: paste(lessonpath, 'test1.txt', sep = '')"
+  CorrectAnswer: paste(lessonpath, 'test1.txt', sep = '')
+  AnswerTests: omnitest(correctExpr="paste(lessonpath, 'test1.txt', sep = '')")
+  Hint: Type paste(lessonpath, 'test1.txt', sep = '')
   
 - Class: cmd_question
   Output: "Humans are basically lazy. Given that we are going to be typing sep = '' a lot
     more over the next few minutes, it would be nice to write a new function that sets
     the default separator of paste() to our preferred value. Handily, R has this built in,
     the paste0() function does this. Try it out on the same file."
-  CorrectAnswer: paste0(lessonpath, 'example1.txt')
-  AnswerTests: omnitest(correctExpr="paste0(lessonpath, 'example1.txt')")
+  CorrectAnswer: paste0(lessonpath, 'test1.txt')
+  AnswerTests: omnitest(correctExpr="paste0(lessonpath, 'test1.txt')")
   Hint: Use paste0()
   
   
@@ -62,8 +62,8 @@
     viewData() that will open up the data files in the RSudio text editor, so that
     you can look at the raw data as we try and read it in. Look at the first data
     set, example1.txt."
-  CorrectAnswer: viewData('example1.txt')
-  AnswerTests: omnitest(correctExpr="viewData('example1.txt')")
+  CorrectAnswer: viewData('test1.txt')
+  AnswerTests: omnitest(correctExpr="viewData('test1.txt')")
   Hint: "Put 'example1.txt' within the call t0 viewData()."
   
 - Class: cmd_question
@@ -71,16 +71,16 @@
     Use read.table to read in the first example dataset, 
     called example1.txt. Do not worry about assigning this data to any variable for now, just
     read it in."
-  CorrectAnswer: read.table(paste0(lessonpath, 'example1.txt'))
-  AnswerTests: omnitest(correctExpr="read.table(paste0(lessonpath, 'example1.txt'))")
+  CorrectAnswer: read.table(paste0(lessonpath, 'test1.txt'))
+  AnswerTests: omnitest(correctExpr="read.table(paste0(lessonpath, 'test1.txt'))")
   Hint: remember to use the paste0() expression we worked out above
   
 - Class: cmd_question
   Output: "This object does not look exactly like the dataset we saw. To examine the
     data in more detail we will need to look at its' stucture. Embed the previous call to read.table()
     within a call to str()."
-  CorrectAnswer: str(read.table(paste0(lessonpath, 'example1.txt')))
-  AnswerTests: omnitest(correctExpr="str(read.table(paste0(lessonpath, 'example1.txt')))")
+  CorrectAnswer: str(read.table(paste0(lessonpath, 'test1.txt')))
+  AnswerTests: omnitest(correctExpr="str(read.table(paste0(lessonpath, 'test1.txt')))")
   Hint: Use str() ... 
   
 - Class: cmd_question
@@ -88,8 +88,8 @@
     However, we have four columns of factors, not numbers. :( *sad face*
     What to do? Well, we can tell R that the first row of this data is the column names,
     or header. Try that within the previous expression."
-  CorrectAnswer: str(read.table(paste0(lessonpath, 'example1.txt'), header = TRUE))
-  AnswerTests: omnitest(correctExpr="str(read.table(paste0(lessonpath, 'example1.txt'), header = TRUE))")
+  CorrectAnswer: str(read.table(paste0(lessonpath, 'test1.txt'), header = TRUE))
+  AnswerTests: omnitest(correctExpr="str(read.table(paste0(lessonpath, 'test1.txt'), header = TRUE))")
   Hint: "Change the header argument in the read.table() function. Check the parentheses carefully!"
   
 - Class: text
@@ -100,8 +100,8 @@
 - Class: cmd_question
   Output: "We used read.table(), which use generic white space as its column delimitor. How
   about we try setting the delimitor to a comma instead. What happens?"
-  CorrectAnswer: str(read.table(paste0(lessonpath, 'example1.txt'), header = TRUE, sep = ','))
-  AnswerTests: omnitest(correctExpr="str(read.table(paste0(lessonpath, 'example1.txt'), header = TRUE, sep = ','))")
+  CorrectAnswer: str(read.table(paste0(lessonpath, 'test1.txt'), header = TRUE, sep = ','))
+  AnswerTests: omnitest(correctExpr="str(read.table(paste0(lessonpath, 'test1.txt'), header = TRUE, sep = ','))")
   Hint: Set the sep argument within read.table() to a comma.
 
 - Class: text
@@ -119,8 +119,8 @@
     
 - Class: cmd_question
   Output: "Now that we know what the actual separator is, let's put that in place of the comma."
-  CorrectAnswer: str(read.table(paste0(lessonpath, 'example1.txt'), header = TRUE, sep = ','))
-  AnswerTests: omnitest(correctExpr="str(read.table(paste0(lessonpath, 'example1.txt'), header = TRUE, sep = '\t'))")
+  CorrectAnswer: str(read.table(paste0(lessonpath, 'test1.txt'), header = TRUE, sep = ','))
+  AnswerTests: omnitest(correctExpr="str(read.table(paste0(lessonpath, 'test1.txt'), header = TRUE, sep = '\t'))")
   Hint: replace the comma with a \t in the sep = argument.
   
 - Class: text
