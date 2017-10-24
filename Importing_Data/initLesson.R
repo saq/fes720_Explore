@@ -10,7 +10,7 @@ swirl_options(swirl_logging = TRUE)
 
 # Path to installed lesson
 lessonpath <- file.path(.get_course_path(), "fes720_Explore",
-                        "Importing_Data", "data/")
+                        "Importing_Data", "data\"), 
 
 
 # open a text editor to see the data
