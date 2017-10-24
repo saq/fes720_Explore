@@ -16,46 +16,38 @@
 - Class: text
   Output: There are various datasets installed with this lesson. 
   
+- Class: text
+  Output: "However, we have to find them!"
+  
+- Class: text
+  Output: "We can do this by changing our working directory to where R has 
+    stored the data in your hard drive."
+  
 - Class: cmd_question
-  Output: "We have also set up the path to those datasets, such that you can access them directly from here.
-         To see the path, type 'lessonpath'. This should display where on your computer the files for this lesson 
-         are stored."
+  Output: "First, let's check our current working directory, with getwd()."
+  CorrectAnswer: getwd()
+  AnswerTests: omnitest(correctExpr='getwd()')
+  Hint: getwd()
+  
+  
+- Class: cmd_question
+  Output: "You can find the path to the lesson datasets using an object that we created, called 'lessonpath'. 
+    To see the path, type 'lessonpath'. This should display where on your computer the 
+    files for this lesson are stored."
   CorrectAnswer: lessonpath
   AnswerTests: omnitest(correctExpr='lessonpath')
   Hint: "Type: lessonpath"
 
 - Class: cmd_question
-  Output: "You can use this path to read in the various datasets as we go through the lesson. 
-    Rather than type out the entire path each time, you can use the paste() function. 
-    Let's try. We will have to change the default separator from ' ' to ''. 
-    Type: paste(lessonpath, 'test1.txt', sep = '')"
-  CorrectAnswer: paste(lessonpath, 'test1.txt', sep = '')
-  AnswerTests: omnitest(correctExpr="paste(lessonpath, 'test1.txt', sep = '')")
-  Hint: Type paste(lessonpath, 'test1.txt', sep = '')
-  
-- Class: cmd_question
-  Output: "Humans are basically lazy. Given that we are going to be typing sep = '' a lot
-    more over the next few minutes, it would be nice to write a new function that sets
-    the default separator of paste() to our preferred value. Handily, R has this built in,
-    the paste0() function does this. Try it out on the same file."
-  CorrectAnswer: paste0(lessonpath, 'test1.txt')
-  AnswerTests: omnitest(correctExpr="paste0(lessonpath, 'test1.txt')")
-  Hint: Use paste0()
-  
-  
+  Output: "Now, you will need to change your working directory to this location. Type: setwd(lessonpath)."
+  CorrectAnswer: setwd(lessonpath)
+  AnswerTests: omnitest(correctExpr='setwd(lessonpath)')
+  Hint: "Type: setwd(lessonpath)"
+
 - Class: text
-  Output: "That will save us 10 key strokes every time! Woo hoo!" 
-  
-- Class: text
-  Output: "Ok, so, now you can access the datasets. When you are working normally, 
-    it is good practice to change your working directory to the specific directory
-    on your computer where that project is located and use relative paths
-    to access data and other files."
+  Output: "Now, our working directory is located in the 'data' directory for this swirl lesson. 
+    All the data files for this lesson are located here."
     
-- Class: text    
-  Output: "However, for now, to ensure that 
-    swirl works correctly, we will keep our working directory wherever it is, and 
-    use this absolute path to read in the data."
 
 - Class: cmd_question
   Output: "OK, let's read in some simple data! We have made the custom function 
@@ -64,7 +56,7 @@
     set, example1.txt."
   CorrectAnswer: viewData('test1.txt')
   AnswerTests: omnitest(correctExpr="viewData('test1.txt')")
-  Hint: "Put 'example1.txt' within the call t0 viewData()."
+  Hint: "Put 'test1.txt' within the call t0 viewData()."
   
 - Class: cmd_question
   Output: Now that you have looked at this data, we will use the read.table() function first.
