@@ -53,7 +53,7 @@
   Output: "OK, let's read in some simple data! We have made the custom function 
     viewData() that will open up the data files in the RSudio text editor, so that
     you can look at the raw data as we try and read it in. Look at the first data
-    set, example1.txt."
+    set, test1.txt."
   CorrectAnswer: viewData('test1.txt')
   AnswerTests: omnitest(correctExpr="viewData('test1.txt')")
   Hint: "Put 'test1.txt' within the call t0 viewData()."
@@ -61,7 +61,7 @@
 - Class: cmd_question
   Output: Now that you have looked at this data, we will use the read.table() function first.
     Use read.table to read in the first example dataset, 
-    called example1.txt. Do not worry about assigning this data to any variable for now, just
+    called test1.txt. Do not worry about assigning this data to any variable for now, just
     read it in."
   CorrectAnswer: read.table('test1.txt')
   AnswerTests: omnitest(correctExpr="read.table('test1.txt')")
@@ -80,20 +80,19 @@
     However, we have four columns of factors, not numbers. :( *sad face*
     What to do? Well, we can tell R that the first row of this data is the column names,
     or header. Try that within the previous expression."
-  CorrectAnswer: str(read.table('test1.txt'), header = TRUE)
-  AnswerTests: omnitest(correctExpr="str(read.table('test1.txt'), header = TRUE)")
-  Hint: "Change the header argument in the read.table() function. Check the parentheses carefully!"
+  CorrectAnswer: str(read.table('test1.txt', header = TRUE))
+  AnswerTests: omnitest(correctExpr="str(read.table('test1.txt', header = TRUE))")
+  Hint: "Add the header argument to the read.table() function. Check the parentheses carefully!"
   
 - Class: text
   Output: "That looks better! We now have a dataset of four numeric columns, with each column named
-    a different letter. We will basically be using this set-up to examine reading in 
-    different datasets. Now, let's get into specifics of column separators ..."
+    a different letter. Now, let's get into specifics of column separators ..."
     
 - Class: cmd_question
   Output: "We used read.table(), which use generic white space as its column delimitor. How
   about we try setting the delimitor to a comma instead. What happens?"
-  CorrectAnswer: str(read.table('test1.txt'), header = TRUE, sep = ',')
-  AnswerTests: omnitest(correctExpr="str(read.table('test1.txt'), header = TRUE, sep = ',')")
+  CorrectAnswer: str(read.table('test1.txt', header = TRUE, sep = ','))
+  AnswerTests: omnitest(correctExpr="str(read.table('test1.txt', header = TRUE, sep = ','))")
   Hint: Set the sep argument within read.table() to a comma.
 
 - Class: text
@@ -111,8 +110,8 @@
     
 - Class: cmd_question
   Output: "Now that we know what the actual separator is, let's put that in place of the comma."
-  CorrectAnswer: str(read.table('test1.txt'), header = TRUE, sep = '\t')
-  AnswerTests: omnitest(correctExpr="str(read.table('test1.txt'), header = TRUE, sep = '\t')")
+  CorrectAnswer: str(read.table('test1.txt', header = TRUE, sep = '\t'))
+  AnswerTests: omnitest(correctExpr="str(read.table('test1.txt', header = TRUE, sep = '\t'))")
   Hint: replace the comma with a \t in the sep = argument.
   
 - Class: text
@@ -129,9 +128,17 @@
   Output: "Now try and read in the example2.csv file using the read.csv() function. 
     You can drop both the header = TRUE and sep =  arguments, because the default for 
     read.csv() is header = TRUE, sep = ','."
+  CorrectAnswer: read.csv('example2.csv')
+  AnswerTests: omnitest(correctExpr="read.csv('example2.csv')")
+  Hint: Use read.csv(), no need for str().
+
+- Class: cmd_question
+  Output: "Ok, so now you can read it in, let's check the structure again. Remember,
+    in this case, there is no need to assign the data to any object name. Just nest the 
+    call to read.csv() within str()."
   CorrectAnswer: str(read.csv('example2.csv'))
   AnswerTests: omnitest(correctExpr="str(read.csv('example2.csv'))")
-  Hint: Use read.csv().
+  Hint: Use read.csv() and str().
     
 - Class: cmd_question
   Output: "One of the features of R that is hopefully appearing in your mind, is that 
@@ -140,8 +147,8 @@
     a defaults. However, we could also use the read.table() function to read in this .csv
     file, by changing the defaults. See if you can read example2.csv with read.table(). 
     Embed it in the str() as before."
-  CorrectAnswer: str(read.table('example2.csv'), header = TRUE, sep = ',')
-  AnswerTests: omnitest(correctExpr="str(read.table('example2.csv'), header = TRUE, sep = ',')")
+  CorrectAnswer: str(read.table('example2.csv', header = TRUE, sep = ','))
+  AnswerTests: omnitest(correctExpr="str(read.table('example2.csv', header = TRUE, sep = ','))")
   Hint: Use read.table() and set the header and sep arguments.
 
 - Class: text
@@ -151,7 +158,7 @@
   Output: "The functions read.csv2(), read.delim(), and read.delim2() work similarly to read.csv() in 
     that they set different defaults. Check the help files and the class lecture for more 
     information if you want, otherwise, you can just use read.table() and read.csv() and set
-    and arguments you need to for each specific dataset."
+    any arguments you need to for each specific dataset."
     
 - Class: text
   Output: "Now we will try and read in some data that has some errors. You should be able to modify 
@@ -179,19 +186,20 @@
   Output: "Got that? Ok, let's carry on ..."
   
 - Class: cmd_question
-  Output: "First, try and read example3.txt in to R with read.table(). Embed the code in the 
-    structure function as before. It will not work. You will have to edit and save the
-    data file."
-  CorrectAnswer: str(read.table('example3.txt'), header = TRUE)
-  AnswerTests: omnitest(correctExpr="str(read.table('example3.txt'), header = TRUE)")
-  Hint: "The code you need is: str(read.table('example3.txt'), header = TRUE).
+  Output: "First, try and read example3.txt in to R with read.table(). 
+    It will not work. You will have to edit and save the data file."
+  CorrectAnswer: read.table('example3.txt', header = TRUE)
+  AnswerTests: omnitest(correctExpr="read.table('example3.txt', header = TRUE)")
+  Hint: "The code you need is: read.table('example3.txt', header = TRUE).
     But, you will also need to edit the text file."
 
 - Class: text
   Output: "You received at least one (maybe several!) error messages trying to read in the example3.txt 
     file. The useful one stated something like 'line 1 did not have 5 elements' and 'incomplete
     final line ...'. These errors were caused by the apostrophe in the first row of the data. Deleting
-    that apostrophe allowed the data to be read in correctly."
+    that apostrophe allowed the data to be read in correctly.
+    
+    It's terrifying that such a small thing can have such 'cat-apostrophic' effects ..."
     
 - Class: cmd_question
   Output: "Let's try another one. Open example4.txt."
@@ -202,9 +210,9 @@
 
 - Class: cmd_question
   Output: "Great, now edit that file and try and read it in with read.table() as before."
-  CorrectAnswer: str(read.table('example4.txt'), header = TRUE)
-  AnswerTests: omnitest(correctExpr="str(read.table('example4.txt'), header = TRUE)")
-  Hint: "The code you need is: str(read.table('example4.txt'), header = TRUE).
+  CorrectAnswer: read.table('example4.txt', header = TRUE)
+  AnswerTests: omnitest(correctExpr="read.table('example4.txt', header = TRUE)")
+  Hint: "The code you need is: read.table('example4.txt', header = TRUE).
     But, you will also need to edit the text file."
 
 - Class: text
@@ -219,10 +227,10 @@
 
 - Class: cmd_question
   Output: "Great, now edit that file and try and read it in with read.table() as before. In 
-    this case, we want to force the separator to be a tab, so set sep = '\t'."
-  CorrectAnswer: str(read.table('example5.txt'), header = TRUE, sep = '\t')
-  AnswerTests: omnitest(correctExpr="str(read.table('example5.txt'), header = TRUE, sep = '\t')")
-  Hint: "The code you need is: str(read.table('example5.txt'), header = TRUE, sep = '\t').
+    this case, we want to force the separator to be a tab, so set sep = '\\t'."
+  CorrectAnswer: read.table('example5.txt', header = TRUE, sep = '\t')
+  AnswerTests: omnitest(correctExpr="read.table('example5.txt', header = TRUE, sep = '\t')")
+  Hint: "The code you need is: read.table('example5.txt', header = TRUE, sep = '\t').
     But, you will also need to edit the text file."
   
 - Class: cmd_question
@@ -234,9 +242,9 @@
 
 - Class: cmd_question
   Output: "Great, now edit that file and try and read it in with read.table() as before."
-  CorrectAnswer: str(read.table(paste0(lessonpath, 'example6.txt'), header = TRUE))
-  AnswerTests: omnitest(correctExpr="str(read.table('example6.txt'), header = TRUE)")
-  Hint: "The code you need is: str(read.table('example6.txt'), header = TRUE).
+  CorrectAnswer: read.table('example6.txt', header = TRUE))
+  AnswerTests: omnitest(correctExpr="read.table('example6.txt', header = TRUE)")
+  Hint: "The code you need is: read.table('example6.txt', header = TRUE).
     But, you will also need to edit the text file."
   
 - Class: mult_question
