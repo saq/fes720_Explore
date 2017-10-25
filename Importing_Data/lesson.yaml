@@ -277,14 +277,7 @@
     also have some idea of some of the pitfalls and errors that can be very
     frustrating when you are trying to do so!"
 
-- Class: cmd_question
-  Output: "As a final bit of housekeeping, let's set the working directory 
-    back to the one we had at the start of this lesson. Type: 
-    setwd(initial_wd)"
-  CorrectAnswer: setwd(initial_wd)
-  AnswerTests: omnitest(correctExpr='setwd(initial_wd')
-  Hint: setwd(initial_wd)
-  
+
 - Class: mult_question
   Output: Please submit the log of this lesson to Google Forms so
     that Simon may evaluate your progress.
