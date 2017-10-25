@@ -12,7 +12,7 @@ swirl_options(swirl_logging = TRUE)
 lessonpath <- file.path(.get_course_path(), "fes720_Explore",
                         "Importing_Data", "data")
 
-.currentwd <- getwd()
+initial_wd <- getwd()
 
 # open a text editor to see the data
 viewData <- function(file1 = 'example1.txt'){

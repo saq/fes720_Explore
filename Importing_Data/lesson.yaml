@@ -60,26 +60,43 @@
   
 - Class: cmd_question
   Output: Now that you have looked at this data, we will use the read.table() function first.
-    Use read.table to read in the first example dataset, 
+    Use read.table() to read in the first example dataset, 
     called test1.txt. Do not worry about assigning this data to any variable for now, just
     read it in."
   CorrectAnswer: read.table('test1.txt')
   AnswerTests: omnitest(correctExpr="read.table('test1.txt')")
-  Hint: remember to use the paste0() expression we worked out above
+  Hint: Use read.table() and the file name in quotes
+  
+- Class: text
+  Output: "This object does not look exactly like the dataset we just opened. The column names
+    have been replaced with 'V1, 'V2', etc. What is going on?" 
   
 - Class: cmd_question
-  Output: "This object does not look exactly like the dataset we saw. To examine the
+  Output: "To examine the
     data in more detail we will need to look at its' stucture. Embed the previous call to read.table()
     within a call to str()."
   CorrectAnswer: str(read.table('test1.txt'))
   AnswerTests: omnitest(correctExpr="str(read.table('test1.txt'))")
   Hint: Use str() ... 
   
+- Class: text
+  Output: "So we have a dataset that looks like it should be four columns and three rows.
+    However, we have four columns of factors, not numbers. :( *sad face*."
+    
+- Class: text
+  Output: "R does not know that the first row is supposed to be the column names and has 
+    made up column names for us ('V1', 'V2', etc.) and also treated each of the columns
+    as text (or specifically here, a factor) because it thinks that the 'a', 'b', etc are
+    part of the data."
+    
+- Class: text
+  Output: "What to do?"
+  
 - Class: cmd_question
-  Output: "So we have a dataset that looks like it should be four columns and five rows.
-    However, we have four columns of factors, not numbers. :( *sad face*
-    What to do? Well, we can tell R that the first row of this data is the column names,
-    or header. Try that within the previous expression."
+  Output: "Well, we can tell R that the first row of this data is the column names,
+    or header. To do this, we need to add the 'header = TRUE' argument to the 
+    read.table() call. Try that within the previous expression so that we can 
+    confirm the structure."
   CorrectAnswer: str(read.table('test1.txt', header = TRUE))
   AnswerTests: omnitest(correctExpr="str(read.table('test1.txt', header = TRUE))")
   Hint: "Add the header argument to the read.table() function. Check the parentheses carefully!"
@@ -89,8 +106,8 @@
     a different letter. Now, let's get into specifics of column separators ..."
     
 - Class: cmd_question
-  Output: "We used read.table(), which use generic white space as its column delimitor. How
-  about we try setting the delimitor to a comma instead. What happens?"
+  Output: "We have used read.table(), which uses generic white space as its column delimitor. How
+  about we try setting the delimitor to a comma instead. What happens to the structure?"
   CorrectAnswer: str(read.table('test1.txt', header = TRUE, sep = ','))
   AnswerTests: omnitest(correctExpr="str(read.table('test1.txt', header = TRUE, sep = ','))")
   Hint: Set the sep argument within read.table() to a comma.
@@ -112,7 +129,7 @@
   Output: "Now that we know what the actual separator is, let's put that in place of the comma."
   CorrectAnswer: str(read.table('test1.txt', header = TRUE, sep = '\t'))
   AnswerTests: omnitest(correctExpr="str(read.table('test1.txt', header = TRUE, sep = '\t'))")
-  Hint: replace the comma with a \t in the sep = argument.
+  Hint: "Replace the comma with a \t in the 'sep = ' argument."
   
 - Class: text
   Output: "We get our nice dataframe back again. Yay!"
@@ -127,7 +144,7 @@
 - Class: cmd_question
   Output: "Now try and read in the example2.csv file using the read.csv() function. 
     You can drop both the header = TRUE and sep =  arguments, because the default for 
-    read.csv() is header = TRUE, sep = ','."
+    read.csv() is header = TRUE, sep = ','. Also no need to put it all within str() this time."
   CorrectAnswer: read.csv('example2.csv')
   AnswerTests: omnitest(correctExpr="read.csv('example2.csv')")
   Hint: Use read.csv(), no need for str().
@@ -230,7 +247,7 @@
     this case, we want to force the separator to be a tab, so set sep = '\\t'."
   CorrectAnswer: read.table('example5.txt', header = TRUE, sep = '\t')
   AnswerTests: omnitest(correctExpr="read.table('example5.txt', header = TRUE, sep = '\t')")
-  Hint: "The code you need is: read.table('example5.txt', header = TRUE, sep = '\t').
+  Hint: "The code you need is: read.table('example5.txt', header = TRUE, sep = '\\t').
     But, you will also need to edit the text file."
   
 - Class: cmd_question
@@ -241,11 +258,26 @@
 
 
 - Class: cmd_question
-  Output: "Great, now edit that file and try and read it in with read.table() as before."
+  Output: "Great, now edit that file and try and read it in with read.table() as before.
+    This is a tough one, so it may help to copy the file into a spreadsheet, or do some
+    searching with the search function for specific characters within the file."
   CorrectAnswer: read.table('example6.txt', header = TRUE))
   AnswerTests: omnitest(correctExpr="read.table('example6.txt', header = TRUE)")
-  Hint: "The code you need is: read.table('example6.txt', header = TRUE).
+  Hint: "The code you need is: read.table('example6.txt', header = TRUE, sep = '\\t').
     But, you will also need to edit the text file."
+  
+- Class: text
+  Output: "Great work! You should now be able to read data in to R. You should 
+    also have some idea of some of the pitfalls and errors that can be very
+    frustrating when you are trying to do so!"
+
+- Class: cmd_question
+  Output: "As a final bit of housekeeping, let's set the working directory 
+    back to the one we had at the start of this lesson. Type: 
+    setwd(initial_wd)"
+  CorrectAnswer: setwd(initial_wd)
+  AnswerTests: omnitest(correctExpr='setwd(initial_wd')
+  Hint: setwd(initial_wd)
   
 - Class: mult_question
   Output: Please submit the log of this lesson to Google Forms so
