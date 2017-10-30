@@ -298,7 +298,7 @@
     
 - Class: figure
   Output: "This figure illustrates some of the plotting characters available to you. They are 
-    called by number. Characters 21:25 can have two different colours specified and can be filled
+    called by number, using the argument 'pch = '. Characters 21:25 can have two different colours specified and can be filled
     with a colour different from the line. We will look at colour in the next lesson."
   Figure: pch_fig.R
   FigureType: new
