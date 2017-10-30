@@ -14,11 +14,11 @@ getLog <- function(){
 submit_log <- function(){
   
   # Please edit the link below
-  pre_fill_link <- ""
+  pre_fill_link <- "https://docs.google.com/forms/d/e/1FAIpQLSfiWnXJurQ64hzWNl3ZEwN_tFk2Od7gRG1mhPr9gjTKv3sWpA/viewform?usp=pp_url&entry.1511167166"
   
   # Do not edit the code below
   if(!grepl("=$", pre_fill_link)){
-    pre_fill_link <- paste0(pre_fill_link, "https://docs.google.com/forms/d/e/1FAIpQLSfiWnXJurQ64hzWNl3ZEwN_tFk2Od7gRG1mhPr9gjTKv3sWpA/viewform?usp=pp_url&entry.1511167166")
+    pre_fill_link <- paste0(pre_fill_link, "=")
   }
   
   p <- function(x, p, f, l = length(x)){if(l < p){x <- c(x, rep(f, p - l))};x}
