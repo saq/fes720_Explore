@@ -225,22 +225,23 @@
   
   
 - Class: cmd_question  
-  Output: "Now, we can pass this vector of indices to subset the dataframe. These indices
-    are the row numbers. Essentially, 
-    we are using square brackets to subset the entire dataframe, still including all the 
-    rows, but in a different order. Try nesting the previous command to subset BirdData 
-    and display the entire data object."
+  Output: "Now, try using this order expression inside [ ] square brackets to subset the original data."
   CorrectAnswer: BirdData[order(BirdData$Tarsus), ]
   AnswerTests: omnitest(correctExpr='BirdData[order(BirdData$Tarsus), ]')
   Hint: Remember that you need to use square brackets and also a comma ...
-
-
+  
+- Class: text
+  Output: "Placing this ordered vector inside the brackets is a essentially subsetting all the data. It is akin
+    to one of the uses of sample(), where we sampled the entire vector without replacement, essentially shuffling
+    everything into a random order. However, with order(), we have a spceific order in mind. The indices of the 
+    vector (the column $Tarsus) then are used as the row numbers across the entire dataset."
+  
 - Class: text
   Output: "You can see that the whole data object 'BirdData' is now sorted by the Tarsus column, 
     which goes from 19.7 to 22.3, compared to the unsorted BirdData."
 
 - Class: cmd_question
-  Output: "As we subset rows 1 to 4, nest this ordered dataset in a call to plot() for Head size as
+  Output: "Now plot this ordered dataset in a call to plot(), for Head size as
     a function of Tarsus."
   CorrectAnswer: plot(Head ~ Tarsus, data = BirdData[order(BirdData$Tarsus), ])
   AnswerTests: omnitest(correctExpr='plot(Head ~ Tarsus, data = BirdData[order(BirdData$Tarsus), ])')
@@ -315,10 +316,19 @@
 - Class: cmd_question
   Output: "Repeat the figure of Head on Tarsus size as before, but set the plotting symbols to twice
     as large and upside-down triangles. Increase the font size of the axes by 3. There is no 
-    need to set different labels or a title."
+    need to set different labels or a title. Remember that in RStudio you can use the arrow
+    buttons to move back and forth through all the Plots that were made in this session."
   CorrectAnswer: plot(Head ~ Tarsus, data = BirdData, pch = 6, cex = 2, cex.axis = 3)
   AnswerTests: omnitest(correctExpr='plot(Head ~ Tarsus, data = BirdData, pch = 6, cex = 2, cex.axis = 3)')
   Hint: plot(Head ~ Tarsus, data = BirdData, pch = 6, cex = 2, cex.axis = 3)
+
+- Class: mult_question
+  Output: Please submit the log of this lesson to Google Forms so
+    that Simon may evaluate your progress.
+  AnswerChoices: That would be lovely, thank you.
+  CorrectAnswer: That would be lovely, thank you.
+  AnswerTests: submit_log()
+  Hint: hint
 
 
 
