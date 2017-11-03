@@ -1,0 +1,223 @@
+- Class: meta
+  Course: fes720_Explore
+  Lesson: Graphics_Devices
+  Author: Swirl Coders Simon Queenborough
+  Type: Standard
+  Organization: Johns Hopkins Bloomberg School of Public Health
+  Version: 2.2.0
+
+- Class: text
+  Output: "This is a short lesson introducing you to graphics devices in R. 
+    So, what IS a graphics device?"
+
+- Class: text
+  Output: "A graphics device is something where you can make a plot appear, 
+    either a screen device such as a window on your computer, or a file device such
+    as a .pdf or .png file."
+
+- Class: text
+  Output: "When you make a plot in R, it has to be 'sent' to a specific graphics device. Unless
+    you specify a device, the call to `plot()` (or whatever plotting function 
+    you use) will open the default graphics device. The default device is usually the screen
+    (i.e., a Plot window in RStudio), especially when you're doing exploratory work."
+
+- Class: text
+  Output: "Usually, you will only send your (final) plots to file devices when you are ready
+    to publish a report, make a presentation, or send info to colleagues. Use the 
+    screen device to explore your data and iterate the figure into its final version."
+
+- Class: text
+  Output: "How you access your screen device depends on what computer system you are using. 
+    On a Mac, the screen device is launched with the call `quartz()`; on Windows you use the
+    call `windows()`, and on Unix/Linux you use `x11()`. On a given platform (Mac, Windows, Unix/Linux)
+    there is only one screen device. Thus, not all graphics devices are available on all platforms
+    (i.e., you cannot launch `windows()` on a Mac)."
+
+- Class: cmd_question
+  Output:  Run the R command `?Devices` to see what graphics devices are available on your system.
+  CorrectAnswer: ?Devices
+  AnswerTests: omnitest(correctExpr='?Devices')
+  Hint: Type ?Devices at the command prompt.
+
+- Class: text
+  Output: R Documentation shows you what is available. 
+
+- Class: text
+  Output: "There are two basic approaches to plotting. (1) The first approach, 
+    plotting to the screen, is the most common. It's simple: you call a plotting function 
+    like `plot()`, `hist()`, or `boxplot()`, so that the plot appears on the screen. In 
+    RStudio, the plot will appear in the Plot pane. Then, you can annotate (add to) the plot 
+    if necessary. We have already used this approach in the Plotting_Data and Plotting_More_Data lessons."
+
+- Class: cmd_question
+  Output: "However, as an example, use the `faithful` dataset included in R and loaded in this 
+    lesson to plot `$eruptions` as a function of `$waiting`."
+  CorrectAnswer: plot(eruptions ~ waiting, data = faithful)
+  AnswerTests: any_of_exprs('plot(eruptions ~ waiting, data = faithful)', 'plot(y = faithful$eruptions, x = faithful$waiting)', 'plot(x = faithful$waiting, y = faithful$eruptions)', 'plot(faithful$waiting, faithful$eruptions)')
+  Hint: Remember that plot() takes an x and y, or a formula and data arguments.
+ 
+- Class: cmd_question
+  Output: "See how R created a scatterplot on the screen for you? This shows the 
+    waiting time between eruptions and the duration of the eruption for the Old Faithful
+    geyser in Yellowstone National Park, Wyoming, USA. Now use the R function `title()` 
+    with the argument `main = ` set equal to the string 'Old Faithful Geyser data'. 
+    This is an annotation to the plot."
+  CorrectAnswer: title(main = "Old Faithful Geyser data")
+  AnswerTests: omnitest(correctExpr='title(main = "Old Faithful Geyser data")')
+  Hint: Type title(main = "Old Faithful Geyser data") at the command prompt.
+ 
+- Class: cmd_question
+  Output: "Simples, right?  Now run the command `dev.cur()`. This will show you the current 
+    plotting device, the screen."
+  CorrectAnswer: dev.cur()
+  AnswerTests: omnitest(correctExpr='dev.cur()')
+  Hint: Type dev.cur() at the command prompt.
+ 
+- Class: text
+  Output: "(2) The second way to create a plot is to send it to a file device. 
+    There are several different kinds of file devices with particular characteristics 
+    and hence uses. These devices include PDF, PNG, JPEG, SVG, and TIFF."
+
+- Class: cmd_question
+  Output: "Depending on the type of plot you're making, you explicitly launch a 
+    graphics device, e.g., a pdf file. Type the command `pdf(file = 'myplot.pdf')` to 
+    launch the file device. This will create the pdf file myplot.pdf in your working directory."
+  CorrectAnswer: pdf(file="myplot.pdf")
+  AnswerTests: omnitest(correctExpr='pdf(file="myplot.pdf")')
+  Hint: Type pdf(file="myplot.pdf") at the command prompt.
+
+- Class: cmd_question
+  Output: "You then call the plotting function (note: if you are using a file device, 
+    no plot will appear on the screen). Plot the Old Faithful data again, as above (use 
+    the arrow key to scroll up through your command history."
+  CorrectAnswer: plot(eruptions ~ waiting, data = faithful)
+  AnswerTests: any_of_exprs('plot(eruptions ~ waiting, data = faithful)', 'plot(y = faithful$eruptions, x = faithful$waiting)', 'plot(x = faithful$waiting, y = faithful$eruptions)', 'plot(faithful$waiting, faithful$eruptions)')
+  Hint: Use the up arrow to scroll back to your previous plotting command.
+
+- Class: cmd_question
+  Output: "Now rerun the title command and annotate the plot. (Up arrow keys are great!)"
+  CorrectAnswer: title(main = "Old Faithful Geyser data")
+  AnswerTests: omnitest(correctExpr='title(main = "Old Faithful Geyser data")')
+  Hint: Type title(main = "Old Faithful Geyser data") at the command prompt.
+ 
+- Class: text
+  Output: "Finally, when plotting to a file device, you have to close the device with the 
+    command `dev.off()`. This step is very important! Don't do it yet, though. After closing, 
+    you'll be able to view the pdf file on your computer."
+ 
+- Class: text
+  Output: "There are two basic types of file devices, vector and bitmap devices. 
+    These use different formats and have different characteristics. Vector formats are good
+    for line drawings and plots with solid colors using a modest number of points, while bitmap 
+    formats are good for plots with a large number of points, natural scenes or web-based plots."
+
+- Class: text
+  Output: "We'll mention 4 specific vector formats. The first is pdf, which we've just used
+    in our example. This format is useful for line-type graphics and papers. It resizes well, 
+    is usually portable, but it is not efficient if a plot has many objects/points."
+
+- Class: text
+  Output: "The second is svg, which is XML-based, scalable vector graphics. This format
+    supports animation and interactivity and is potentially useful for web-based plots."
+
+- Class: text
+  Output: "The last two vector formats are win.metafile, a Windows-only metafile format, 
+    and postscript (ps), an older format which also resizes well, is usually portable, and 
+    can be used to create encapsulated postscript files (eps). Unfortunately, Windows systems 
+    often don’t have a postscript viewer."
+
+- Class: text
+  Output: "We'll also mention 4 different bitmap formats. The first is png (Portable Network
+    Graphics) which is good for line drawings or images with solid colors. It uses lossless 
+    compression (like the old GIF format), and most web browsers can read this format natively. 
+    In addition, png is good for plots with many points, but it does not resize well."
+
+- Class: text
+  Output: "In contrast, jpeg files are good for photographs or natural scenes. They use lossy
+    compression, so they're good for plots with many points. Files in jpeg format don't resize 
+    well, but they can be read by almost any computer and any web browser. They're not great for 
+    line drawings."
+
+- Class: text
+  Output: "The last two bitmap formats are tiff, an older lossless compression meta-format and 
+    bmp which is a native Windows bitmapped format."
+
+- Class: text
+  Output: "Although it is possible to open multiple graphics devices (screen, file, or both), 
+    when viewing multiple plots at once, plotting can only occur on one graphics device at a time."
+
+- Class: cmd_question
+  Output: "The currently active graphics device can be found by calling dev.cur(). Try it now to 
+    see what number is assigned to your pdf device."
+  CorrectAnswer: dev.cur()
+  AnswerTests: omnitest(correctExpr='dev.cur()')
+  Hint: Type dev.cur() at the command prompt.
+
+- Class: cmd_question
+  Output: "Now use dev.off() to close the device."
+  CorrectAnswer: dev.off()
+  AnswerTests: omnitest(correctExpr='dev.off()')
+  Hint: Type dev.off() at the command prompt.
+
+- Class: cmd_question
+  Output: "Now rerun dev.cur() to see what integer your plotting window is assigned."
+  CorrectAnswer: dev.cur()
+  AnswerTests: omnitest(correctExpr='dev.cur()')
+  Hint: Type dev.cur() at the command prompt.
+
+- Class: text
+  Output: "The device is back to what it was when you started. As you might have guessed, 
+    every open graphics device is assigned an integer greater than or equal to 2. You can 
+    change the active graphics device with dev.set(<integer>) where <integer> is the number 
+    associated with the graphics device you want to switch to."
+
+- Class: text
+  Output: "Most journals and book publishers have a specific format that they want you to 
+    submit your figures in. Now, you should be able to work with, and create figures in, most 
+    of the common graphics formats. Usually, .pdf or .eps are requested for line figures such 
+    as graphs; tiff files are usually requested for photos and illustrations to ensure that 
+    they can be printed at a high enough resolution (printed pages need higher resolution 
+    figures than computer screens)."
+
+- Class: cmd_question
+  Output: "As with other functions, graphics devices have several arguments. Look at the
+    arguments for pdf, via the help file."
+  CorrectAnswer: ?pdf
+  AnswerTests: omnitest(correctExpr='?pdf')
+  Hint: Type ?pdf
+  
+- Class: text
+  Output: "You can see that the first argument is `file = `, where you specify the path
+    and the file name (e.g., 'myplot.pdf')."
+    
+- Class: text
+  Output: "The next most useful arguments are `height = ` and `width = `. The default 
+    size for the pdf is 7 x 7 inches. If you want a different sized square or rectangle, 
+    you will need to change that here. For example, you may have a figure with 
+    multiple panels that needs a rectangular shape. You may need to play around with 
+    these sizes to get the figure looking right."
+    
+- Class: text
+  Output: "One other effect of changing the size of the pdf is that it will alter the
+    magnification (i.e., all the `cex = ` arguments. For example, if you make the pdf
+    14 x 14 inches in size, all the text will look that much smaller."
+    
+- Class: text
+  Output: "Bitmap file devices have similar arguments. The default size for png,
+    jpeg, bmp, and tiff files is 480 x 480 pixels."
+
+
+- Class: text
+  Output: "Ok, that's all folks! Congrats on finishing another lesson."
+
+- Class: mult_question
+  Output: "Please submit the log of this lesson to Google Forms so
+    that Simon may evaluate your progress."
+  AnswerChoices: okeydokey!
+  CorrectAnswer: okeydokey!
+  AnswerTests: submit_log()
+  Hint: hint
+
+
+
+
