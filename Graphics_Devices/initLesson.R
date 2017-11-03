@@ -14,3 +14,7 @@ lessonpath <- file.path(.get_course_path(), "fes720_Explore",
 
 
 
+try(dev.off(),silent=TRUE)
+plot.new()
+
+
