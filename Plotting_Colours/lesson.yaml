@@ -305,6 +305,15 @@
   Figure:  rcolbrewer_div_fig.R
   FigureType: new
     
+
+- Class: mult_question
+  Output: Please submit the log of this lesson to Google Forms so
+    that Simon may evaluate your progress.
+  AnswerChoices: Yup!
+  CorrectAnswer: Yup!
+  AnswerTests: submit_log()
+  Hint: hint
+
     
 
 
