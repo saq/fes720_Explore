@@ -167,10 +167,10 @@
   AnswerTests: omnitest(correctExpr='rgb(255, 255, 0, maxColorValue = 255)')
   Hint: rgb(255, 255, 0, maxColorValue = 255)
 
-- Class: video
+- Class: text
   Output: "Many of the lists of R colours you will find online list their names,
-    hex triplet, and RGB values. This one is a good example."
-  VideoLink: http://research.stowers.org/mcm/efg/R/Color/Chart/ColorChart.pdf
+    hex triplet, and RGB values. This one is a good example: http://research.stowers.org/mcm/efg/R/Color/Chart/ColorChart.pdf."
+#  VideoLink: http://research.stowers.org/mcm/efg/R/Color/Chart/ColorChart.pdf
 
 - Class: text
   Output: "You can also define any one of the 16 million other colours you like ... 
@@ -259,11 +259,11 @@
   Hint: plot(1:10, 1:10, pch = 20, cex = 4, col = heat.colors(10))
   
   
-- Class: video
+- Class: text
   Output: "There are several other packages that provide palettes available. The
     Wes Anderson color palettes are derived from the color schemes of various
-    movies directed by Wes Anderson ..."
-  VideoLink: https://github.com/karthik/wesanderson#wes-anderson-palettes  
+    movies directed by Wes Anderson ... https://github.com/karthik/wesanderson#wes-anderson-palettes  "
+#  VideoLink: https://github.com/karthik/wesanderson#wes-anderson-palettes  
     
 
 - Class: text
@@ -271,11 +271,11 @@
     clear and distinguishable manner, where the colours indicate properties of the
     data can be useful."
     
-- Class: video
+- Class: text
   Output: "The R ColorBrewer package contains three different kinds of palettes
     that are designed to provide information about the underlying data: 
-    qualitative, diverging, and sequential."
-  VideoLink: http://www.colorbrewer.org
+    qualitative, diverging, and sequential. http://www.colorbrewer2.org"
+#  VideoLink: http://www.colorbrewer2.org
     
 - Class: text
   Output: "The palettes are composed of 8--12 distinct colors, but if you have
