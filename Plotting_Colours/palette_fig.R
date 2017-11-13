@@ -1,3 +1,7 @@
+fname <- pathtofile("default-palettes.png")
+try(dev.off(),silent=TRUE)
+plot.new()
+
 temp <- c(5,7,6,4,8)
 par(mfrow = c(2,2) )
 barplot(temp, col=rainbow(5), main="rainbow")

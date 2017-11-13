@@ -88,9 +88,9 @@
   Output: "The function `gray()` takes two arguments, `level =`, which varies from 1 (totally white)
     to 0 (totally black); and `alpha = `, which varies from 0 (totally transparent) to 1 (totlay opaque).
     Use `seq()` to plot the points ranging evenly from almost white (level = 0.9) to black over the ten points."
-  CorrectAnswer: plot(1:10, 1:10, pch = 20, cex = 4, col = gray(seq(0.9, 0, length.out = 8)) )
+  CorrectAnswer: plot(1:10, 1:10, pch = 20, cex = 4, col = gray(level = seq(0.9, 0, length.out = 8)) )
   AnswerTests: omnitest(correctExpr='plot(1:10, 1:10, pch = 20, cex = 4, col = gray(level = seq(0.9, 0, length.out = 8)) )')
-  Hint: plot(1:10, 1:10, pch = 20, cex = 4, col = gray(seq(0.9, 0, length.out = 8)) )
+  Hint: plot(1:10, 1:10, pch = 20, cex = 4, col = gray(level = seq(0.9, 0, length.out = 8)) )
 
 - Class: text
   Output: "So far, we have used names that link to specific pre-defined colours. 
