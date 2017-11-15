@@ -198,7 +198,7 @@
 
 - Class: cmd_question
   Output: "We can define a palette of any colors that we like. Using the `palette()`
-    function, set a palette of red, papayawhip, seashell, and burleywood."
+    function, set a palette of red, papayawhip, seashell, and burlywood."
   CorrectAnswer: palette(c('red', 'papayawhip', 'seashell', 'burlywood'))
   AnswerTests: omnitest(correctExpr="palette(c('red', 'papayawhip', 'seashell', 'burlywood'))")
   Hint: palette(c('red', 'papayawhip', 'seashell', 'burlywood'))

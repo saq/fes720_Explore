@@ -1,4 +1,4 @@
-fname <- pathtofile("default-palettes.png")
+#fname <- pathtofile("default-palettes.png")
 try(dev.off(),silent=TRUE)
 plot.new()
 
